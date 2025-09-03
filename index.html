@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Kesesuaian Ekologis Pohon Jalan Kota Blitar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1F1F1;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flowchart-item {
+            border-color: #244D70;
+            color: #244D70;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .flowchart-item:hover {
+            background-color: #244D70;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flowchart-arrow {
+            color: #244D70;
+            opacity: 0.6;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23009473%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 0.8em;
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+<body class="text-[#333333]">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#244D70] mb-2">Analisis Kesesuaian Ekologis Pohon Jalan Kota Blitar</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Analisis ini menggunakan metode analisis multikriteria kualitatif: Setiap pohon dievaluasi berdasarkan karakteristik perakaran, toleransi lingkungan, dukungan terhadap ekosistem lokal, serta potensi risikonya.</p>
+        </header>
+
+        <section class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#009473] text-center mb-6">Distribusi Kesesuaian Ekologis Pohon</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Dari 40 jenis pohon yang dianalisis, tidak semuanya memberikan manfaat yang sama. Berikut adalah pembagiannya berdasarkan tingkat kesesuaian ekologis di lingkungan Kota Blitar.</p>
+                <div class="chart-container">
+                    <canvas id="suitabilityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#009473] text-center mb-2">Pohon yang Sesuai di Jalan Kota Blitar</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Jenis pohon yang sesuai untuk penghijauan jalan di Kota Blitar. Akarnya aman, perawatannya minim, dan memberikan manfaat ekologis maksimal.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🌳</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Tanjung</h3>
+                    <p class="text-gray-600">Akar aman, toleran polusi, dan memberikan naungan rindang.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🌸</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Tabebuya</h3>
+                    <p class="text-gray-600">Bunga cantik estetik. Perakaran tidak invasif, aman untuk trotoar sempit.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🌿</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Sonokembang</h3>
+                    <p class="text-gray-600">Tumbuhnya cepat dan penyerap polutan yang baik.</p>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🍃</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Johar</h3>
+                    <p class="text-gray-600">Tumbuhnya cepat, sangat tahan panas dan kekeringan.</p>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🍋</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Asam Jawa</h3>
+                    <p class="text-gray-600">Tangguh, tahan kekeringan, dan berumur panjang. Daun kecilnya tidak banyak menyumbat drainase.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">💪</div>
+                    <h3 class="text-xl font-bold text-[#244D70]">Trembesi</h3>
+                    <p class="text-gray-600">Penyerap karbondioksida terbaik. Memberikan naungan yang lebar, ideal untuk ruang terbuka seperti alun-alun atau jalan yang sangat lebar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#009473] text-center mb-6">Profil Karakteristik Pohon</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Pilih jenis pohon dari menu di bawah ini untuk melihat profil karakteristiknya secara visual. Setiap sumbu dinilai dari 1 (rendah) hingga 5 (tinggi).</p>
+                <div class="max-w-xs mx-auto mb-8">
+                    <select id="treeSelector" class="w-full p-3 border-2 border-gray-300 rounded-lg bg-white text-lg focus:border-[#009473] focus:ring-0">
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="individualRadarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#F15A24] text-center mb-2">Risiko Pohon yang Kurang Sesuai</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Risiko keamanan dan infrastruktur pohon pada kategori "kurang sesuai"</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="border-2 border-red-200 bg-red-50 rounded-lg p-4">
+                    <h3 class="font-bold text-lg text-red-800 flex items-center"><span class="text-2xl mr-2">🚧</span>Akar Merusak</h3>
+                    <p class="text-sm text-red-700 mt-2">Menghancurkan trotoar, pipa, dan pondasi. Contoh: Beringin, Flamboyan, Pule.</p>
+                </div>
+                <div class="border-2 border-orange-200 bg-orange-50 rounded-lg p-4">
+                     <h3 class="font-bold text-lg text-orange-800 flex items-center"><span class="text-2xl mr-2">🍂</span>Buah & Sampah Organik</h3>
+                    <p class="text-sm text-orange-700 mt-2">Buah keras/berat dan sampah daun/polong masif dapat membahayakan dan mengotori. Contoh: Maja, Mahoni.</p>
+                </div>
+                <div class="border-2 border-blue-200 bg-blue-50 rounded-lg p-4">
+                     <h3 class="font-bold text-lg text-blue-800 flex items-center"><span class="text-2xl mr-2">💨</span>Cabang Rapuh</h3>
+                    <p class="text-sm text-blue-700 mt-2">Mudah patah saat angin kencang dan membahayakan warga. Contoh: Dadap, Flamboyan, Spathodea.</p>
+                </div>
+                <div class="border-2 border-purple-200 bg-purple-50 rounded-lg p-4">
+                     <h3 class="font-bold text-lg text-purple-800 flex items-center"><span class="text-2xl mr-2">🌱</span>Spesies Invasif</h3>
+                    <p class="text-sm text-purple-700 mt-2">Dapat menyebar tak terkendali dan merusak ekosistem lokal. Contoh: Spathodea (Kecrutan).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+             <h2 class="text-2xl md:text-3xl font-bold text-[#009473] text-center mb-10">Saran dan Rekomendasi</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flowchart-item border-2 rounded-lg p-4 w-52 text-center font-semibold">1. Menyusun Daftar Pohon yang Sesuai</div>
+                <div class="text-4xl flowchart-arrow hidden md:block">→</div>
+                 <div class="text-4xl flowchart-arrow md:hidden">↓</div>
+                <div class="flowchart-item border-2 rounded-lg p-4 w-52 text-center font-semibold">2. Menerapkan Zonasi Penanaman</div>
+                <div class="text-4xl flowchart-arrow hidden md:block">→</div>
+                 <div class="text-4xl flowchart-arrow md:hidden">↓</div>
+                <div class="flowchart-item border-2 rounded-lg p-4 w-52 text-center font-semibold">3. Mengelola Pohon yang Berisiko</div>
+                 <div class="text-4xl flowchart-arrow hidden md:block">→</div>
+                  <div class="text-4xl flowchart-arrow md:hidden">↓</div>
+                <div class="flowchart-item border-2 rounded-lg p-4 w-52 text-center font-semibold">4. Meningkatkan Keanekaragaman</div>
+            </div>
+        </section>
+        
+        <footer class="text-center mt-16 pt-8 border-t border-gray-300">
+            <p class="text-sm text-gray-500">Data bersumber dari Laporan Analisis Kesesuaian Ekologis Pohon Jalan Kota Blitar. Infografik ini dibuat untuk tujuan edukasi dan perencanaan kota.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    if(currentLine.length > 0) currentLine += ' ';
+                    currentLine += word;
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const sharedTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const suitabilityData = {
+            labels: ['Sangat Sesuai', 'Cukup Sesuai', 'Kurang Sesuai'],
+            datasets: [{
+                label: 'Jumlah Spesies Pohon',
+                data: [8, 18, 14],
+                backgroundColor: ['#009473', '#FDB813', '#F15A24'],
+                borderColor: '#F1F1F1',
+                borderWidth: 4,
+                hoverOffset: 10
+            }]
+        };
+
+        const suitabilityCtx = document.getElementById('suitabilityChart').getContext('2d');
+        new Chart(suitabilityCtx, {
+            type: 'doughnut',
+            data: suitabilityData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: sharedTooltipOptions.plugins.tooltip
+                },
+                cutout: '60%'
+            }
+        });
+        
+        const green = '#009473';
+        const yellow = '#FDB813';
+        const red = '#F15A24';
+        
+        const treeProfileData = {
+            'Asam Jawa': { data: [5, 4, 4, 4, 5], color: green },
+            'Asam Londo': { data: [3, 4, 4, 3, 2], color: red },
+            'Beringin': { data: [1, 3, 5, 5, 1], color: red },
+            'Bintaro': { data: [5, 5, 4, 1, 1], color: red },
+            'Bungur': { data: [4, 3, 4, 4, 4], color: yellow },
+            'Cemara Laut': { data: [2, 4, 2, 1, 3], color: red },
+            'Dadap Merah': { data: [2, 2, 3, 3, 1], color: red },
+            'Flamboyan': { data: [1, 2, 4, 3, 2], color: red },
+            'Gmelina': { data: [5, 3, 4, 3, 3], color: yellow },
+            'Glodokan Tiang': { data: [5, 4, 2, 2, 5], color: yellow },
+            'Jati': { data: [4, 3, 3, 2, 3], color: red },
+            'Johar': { data: [5, 4, 5, 3, 4], color: green },
+            'Kalpataru': { data: [2, 3, 4, 2, 2], color: red },
+            'Kayu Putih': { data: [4, 5, 3, 4, 4], color: yellow },
+            'Kenanga': { data: [5, 3, 3, 3, 3], color: yellow },
+            'Kesambi': { data: [5, 5, 4, 4, 5], color: yellow },
+            'Ketapang': { data: [4, 2, 5, 4, 3], color: yellow },
+            'Ketapang Kencana': { data: [5, 4, 3, 2, 5], color: yellow },
+            'Kupu-kupu': { data: [4, 4, 3, 3, 4], color: yellow },
+            'Mahoni': { data: [4, 3, 5, 3, 2], color: yellow },
+            'Majapahit': { data: [3, 4, 3, 2, 1], color: red },
+            'Mimbo': { data: [4, 5, 4, 4, 4], color: green },
+            'Mlinjo': { data: [5, 4, 2, 4, 5], color: red },
+            'Nyamplung': { data: [5, 4, 5, 3, 3], color: yellow },
+            'Palem Bajing': { data: [5, 3, 1, 3, 3], color: yellow },
+            'Palem Raja': { data: [5, 4, 1, 1, 3], color: yellow },
+            'Pinisium': { data: [5, 3, 5, 3, 4], color: yellow },
+            'Pinus': { data: [4, 3, 3, 1, 2], color: red },
+            'Pule': { data: [2, 3, 4, 3, 3], color: red },
+            'Randu': { data: [1, 3, 3, 3, 1], color: red },
+            'Saman / Trembesi': { data: [2, 3, 5, 5, 3], color: green },
+            'Segawe': { data: [5, 4, 4, 3, 4], color: yellow },
+            'Sikat Botol': { data: [5, 4, 2, 4, 5], color: yellow },
+            'Sonokeling': { data: [5, 4, 5, 3, 4], color: yellow },
+            'Sonokembang': { data: [3, 3, 5, 4, 4], color: green },
+            'Spathodea': { data: [2, 4, 4, 2, 1], color: red },
+            'Tabebuya': { data: [5, 4, 3, 4, 5], color: green },
+            'Tanjung': { data: [5, 4, 5, 4, 5], color: green },
+            'Waru': { data: [3, 2, 4, 3, 4], color: yellow }
+        };
+
+        const treeSelector = document.getElementById('treeSelector');
+        const radarCtx = document.getElementById('individualRadarChart').getContext('2d');
+        let individualRadarChart;
+
+        function populateSelector() {
+            const treeNames = Object.keys(treeProfileData);
+            treeNames.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                treeSelector.appendChild(option);
+            });
+        }
+
+        function createOrUpdateRadarChart(treeName) {
+            const profile = treeProfileData[treeName];
+            if (!profile) return;
+
+            const radarData = {
+                labels: ['Keamanan Akar', 'Perawatan Rendah', 'Kualitas Naungan', 'Dukungan Ekosistem', 'Risiko Rendah'],
+                datasets: [{
+                    label: treeName,
+                    data: profile.data,
+                    borderColor: profile.color,
+                    backgroundColor: profile.color.replace(')', ', 0.2)').replace('rgb', 'rgba'),
+                    pointBackgroundColor: profile.color,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: profile.color
+                }]
+            };
+
+            if (individualRadarChart) {
+                individualRadarChart.data = radarData;
+                individualRadarChart.update();
+            } else {
+                individualRadarChart = new Chart(radarCtx, {
+                    type: 'radar',
+                    data: radarData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: sharedTooltipOptions.plugins.tooltip,
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { display: true },
+                                suggestedMin: 0,
+                                suggestedMax: 5,
+                                pointLabels: { font: { size: 12 } },
+                                ticks: { stepSize: 1 }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        treeSelector.addEventListener('change', (event) => {
+            createOrUpdateRadarChart(event.target.value);
+        });
+
+        populateSelector();
+        createOrUpdateRadarChart(treeSelector.value);
+
+
+    </script>
+</body>
+</html>
+
